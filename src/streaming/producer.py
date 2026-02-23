@@ -19,13 +19,11 @@ def chef():
 def waiter():
    print(consume())
    print(consume())
-   print(consume())
-
-
-thread1 =threading.Thread(target=chef)
+   
 thread2 =threading.Thread(target=waiter)
 thread1.start()
 thread1.join()
 thread2.start()
 thread2.join()
+
 
