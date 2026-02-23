@@ -5,10 +5,6 @@ my_queue=Queue()
 
 def publish (message):
     my_queue.put(message)
-
-def consume():
-    if my_queue.empty():
-        print("the queue is empty")
     else:
      message=my_queue.get()
      return message 
@@ -25,5 +21,6 @@ thread1.start()
 thread1.join()
 thread2.start()
 thread2.join()
+
 
 
