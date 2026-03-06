@@ -72,7 +72,7 @@ ANOMALY_MESSAGES = {
     'AuthService': [
         'Multiple failed login attempts: 47 failures in 60 seconds',
         'Brute force attack detected from IP: 192.168.1.105',
-        'Authentication service unavailable',
+        'Authentication service unavailable try later',
     ],
     'WebServer': [
         'GET /api/data 500 Internal Server Error',
@@ -80,6 +80,7 @@ ANOMALY_MESSAGES = {
         'Too many requests: rate limit exceeded',
     ]
 }
+
 
 
 
