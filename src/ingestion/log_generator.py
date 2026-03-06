@@ -25,7 +25,7 @@ NORMAL_MESSAGES = {
         'Network throughput normal: 120 Mbps',
     ],
     'DiskService': [
-        'Disk usage at 52% capacity',
+        'Disk usage at 54% capacity',
         'Read operation completed in 8ms',
         'Write operation successful',
     ],
@@ -72,7 +72,7 @@ ANOMALY_MESSAGES = {
     'AuthService': [
         'Multiple failed login attempts: 47 failures in 60 seconds',
         'Brute force attack detected from IP: 192.168.1.105',
-        'Authentication service unavailable',
+        'Authentication service unavailable try later',
     ],
     'WebServer': [
         'GET /api/data 500 Internal Server Error',
@@ -139,6 +139,8 @@ def stream_logs(total_lines=1000):
 
 if __name__ == "__main__":
     stream_logs(total_lines=1000)
+
+
 
 
 
