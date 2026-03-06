@@ -82,5 +82,68 @@ ANOMALY_MESSAGES = {
 }
 
 
+def generate_log_line(force_anomaly=False):
+
+    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+
+    component = random.choice(COMPONENTS)
+
+    if force_anomaly:
+        level = random.choice(['ERROR', 'CRITICAL'])
+        message = random.choice(ANOMALY_MESSAGES[component])
+    else:
+        level = random.choices(
+            list(LOG_LEVEL_WEIGHTS.keys()),
+            weights=list(LOG_LEVEL_WEIGHTS.values()),
+            k=1
+        )[0]
+        message = random.choice(NORMAL_MESSAGES[component])
+
+    log_line = f"{timestamp} - {level} - {component} - {message}"
+
+    return log_line
+
+
+def stream_logs(total_lines=1000):
+
+    os.makedirs(os.path.dirname(LIVE_LOG_PATH), exist_ok=True)
+
+    print(f"Starting log stream...")
+    print(f"Writing to: {LIVE_LOG_PATH}")
+    print(f"Total lines: {total_lines}")
+    print("-" * 50)
+
+    anomaly_count = 0
+
+    with open(LIVE_LOG_PATH, 'w') as f:
+
+        for i in range(total_lines):
+
+            is_anomaly = random.random() < ANOMALY_PROBABILITY
+
+            log_line = generate_log_line(force_anomaly=is_anomaly)
+
+            f.write(log_line + '\n')
+            f.flush()
+
+            if is_anomaly:
+                anomaly_count += 1
+                print(f"[ANOMALY] {log_line}")
+            else:
+                print(f"[NORMAL]  {log_line}")
+
+            time.sleep(LOG_DELAY)
+
+    print("-" * 50)
+    print(f"Done. Anomalies injected: {anomaly_count} out of {total_lines}")
+
+if __name__ == "__main__":
+    stream_logs(total_lines=1000)
+
+
+
+
+
+
 
 
