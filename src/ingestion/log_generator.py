@@ -25,7 +25,7 @@ NORMAL_MESSAGES = {
         'Network throughput normal: 120 Mbps',
     ],
     'DiskService': [
-        'Disk usage at 52% capacity',
+        'Disk usage at 54% capacity',
         'Read operation completed in 8ms',
         'Write operation successful',
     ],
@@ -80,6 +80,7 @@ ANOMALY_MESSAGES = {
         'Too many requests: rate limit exceeded',
     ]
 }
+
 
 
 
